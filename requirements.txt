@@ -1,0 +1,7 @@
+flask
+toutatis
+httpx
+requests
+rich
+phonenumbers
+pycountry

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toutatis OSINT</title>
+</head>
+<body>
+  <h1>Instagram OSINT</h1>
+  <input type="text" id="username" placeholder="Instagram Username" />
+  <input type="text" id="sessionid" placeholder="Session ID" />
+  <button onclick="runToutatis()">Run</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function runToutatis() {
+      const username = document.getElementById('username').value;
+      const sessionid = document.getElementById('sessionid').value;
+
+      const response = await fetch('/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, sessionid })
+      });
+
+      const result = await response.json();
+      document.getElementById('output').textContent = result.output || result.error;
+    }
+  </script>
+</body>
+</html>
